@@ -1,9 +1,25 @@
+"use client"
 import React from 'react'
 import Link from 'next/link';
 import styles from './Navbar.module.css'
 import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
-
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 const Navbar = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleAuthAction = async () => {
+    if (session) {
+      // User is logged in, handle logout
+      await signOut();
+    } else {
+      // User is not logged in, handle login
+      
+      router.push("/dashboard");
+    }
+  };
+
     const links = [
         {
           id: 1,
@@ -47,7 +63,9 @@ const Navbar = () => {
         </Link>
 
       ))}
-      <button className={styles.logout}>Logout</button>
+      <button className={styles.logout} onClick={handleAuthAction}>
+      {session ? "Logout" : "Login"}
+    </button>
       </div>
       </div>
   )

@@ -6,7 +6,7 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <div className={styles.container}>
-        <div>@2024 Lamania.All rights reserved</div>
+        <div>@2024 Made By Pranav More<br></br>Contact:7038637629<br></br>.All rights reserved</div>
         <div>
             <div className={styles.images}>
               <Image src="/1.png"  height={15} width={15} className={styles.icon} alt='Lama Dev' ></Image>

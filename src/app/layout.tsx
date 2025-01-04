@@ -5,6 +5,8 @@ import Navbar from "../components/nav/Navbar";
 import Footer from "@/components/footer/Footer";
 import { ToggleProvider } from "@/context/ToggleProvoider";
 import {Inter,Roboto,Poppins} from "next/font/google"
+import AuthProvoider from "@/components/AuthProvoider/AuthProvoider"
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +35,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ToggleProvider>
+          <AuthProvoider>
         <div className="container">
         <Navbar/>
         {children}
         <Footer/>
         </div>
+        </AuthProvoider>
         </ToggleProvider>
       </body>
       
