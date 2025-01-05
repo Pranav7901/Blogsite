@@ -1,21 +1,42 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./page.module.css";
+import { z } from "zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
   const [error, setError] = useState(null);
+  const [result, setResult] = useState(null); 
 
   const router = useRouter();
 
+  const schema = z.object({
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const name = e.target[0].value;
-    const email = e.target[1].value;
-    const password = e.target[2].value;
+    const formData = {
+      name: e.target[0].value,
+      email: e.target[1].value,
+      password: e.target[2].value,
+    };  
 
     try {
+      let validatedresult =   schema.safeParse(formData);
+      
+    if (!validatedresult.success) {
+      // Extract the error message
+      const errorMessage = validatedresult.error.errors[0]?.message;
+      setResult(errorMessage); // Update the state with the error message
+    } else {
+      // Validation succeeded
+      setResult("Form submitted successfully!");
+    }
+      
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
@@ -58,7 +79,7 @@ const Register = () => {
           className={styles.input}
         />
         <button className={styles.button}>Register</button>
-        {error && "Something went wrong!"}
+        {error && `${result}`}
       </form>
       <span className={styles.or}>- OR -</span>
       <Link className={styles.link} href="/dashboard/login">
