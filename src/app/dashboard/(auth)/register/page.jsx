@@ -9,6 +9,8 @@ const Register = () => {
   const [error, setError] = useState(null);
   const [result, setResult] = useState(null); 
 
+  const [showpassword, setPassword] = useState(false);
+
   const router = useRouter();
 
   const schema = z.object({
@@ -17,13 +19,24 @@ const Register = () => {
     password: z.string().min(6, "Password must be at least 6 characters"),
   });
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value, // Update only the specific field that changed
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      name: e.target[0].value,
-      email: e.target[1].value,
-      password: e.target[2].value,
-    };  
+    const { name, email, password } = formData;
+     
 
     try {
       let validatedresult =   schema.safeParse(formData);
@@ -55,6 +68,10 @@ const Register = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setPassword((prevState) => !prevState);
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Create an Account</h1>
@@ -62,22 +79,41 @@ const Register = () => {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
+          name="name"
           placeholder="Username"
           required
+          value={formData.name}
           className={styles.input}
+          onChange={handleChange}
         />
         <input
           type="text"
+          name="email"
           placeholder="Email"
           required
+          value={formData.email}
           className={styles.input}
+          onChange={handleChange}
         />
+        <div className={styles.inputWrapper}>
         <input
-          type="password"
+          type={showpassword ? "text " : "password"}
           placeholder="Password"
           required
+          name="password"
+          value={formData.password}
           className={styles.input}
+          onChange={handleChange}
         />
+         <button
+        type="button"
+        onClick={togglePasswordVisibility}
+        className={styles.toggleButton}
+        aria-label="Toggle Password Visibility"
+      >
+        {showpassword ? "Hide" : "Show"} 
+      </button>
+      </div>
         <button className={styles.button}>Register</button>
         {error && `${result}`}
       </form>

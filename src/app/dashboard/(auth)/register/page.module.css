@@ -14,6 +14,9 @@
   }
   
   .input{
+
+    width: 100%;
+    padding-right: 50px;
     padding: 20px;
     background-color: transparent;
     border: 2px solid #bbb;
@@ -21,6 +24,13 @@
     border-radius: 5px;
     font-size: 20px;
     font-weight: bold;
+  }
+
+  
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
   }
   
   .button {
@@ -32,4 +42,14 @@
     border-radius: 5px;
     color: #eee;
     font-weight: bold;
+  }
+
+  .toggleButton {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #555;
   }

@@ -18,6 +18,7 @@ export const POST = async (request) => {
 
   try {
     await newUser.save();
+    console.log("new user aded to database");
     return new NextResponse("User has been created", {
       status: 201,
     });

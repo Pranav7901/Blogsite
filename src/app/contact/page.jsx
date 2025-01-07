@@ -82,9 +82,7 @@ const Contact = () => {
             rows={10}
             required
           ></textarea>
-          <button type="submit" className={styles.button}>
-            Send
-          </button>
+          <input type="submit"  className={styles.button} />
         </form>
         {responseMessage && <p className={styles.responseMessage}>{responseMessage}</p>}
       </div>
