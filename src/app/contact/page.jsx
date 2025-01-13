@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Button from "@/components/Button/button";
-import Imgcontact from "@/assets/contact.png";
+import Imgcontact from "../../../public/contact.png";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
