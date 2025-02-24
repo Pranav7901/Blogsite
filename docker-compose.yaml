@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   app:
     build:
@@ -12,12 +13,16 @@ services:
       - mongo
     volumes:
       - .:/app
+      - /app/node_modules
     networks:
       - app-network
+    stdin_open: true  # Keeps the container interactive for Next.js dev mode
+    tty: true
 
   mongo:
     image: mongo
     container_name: mongo
+    restart: always  # Ensures MongoDB restarts if it crashes
     ports:
       - "27017:27017"
     volumes:
