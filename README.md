@@ -1,8 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blogsite - Scalable Cloud-Based Blogging Platform  
 
-## Getting Started
+This is a [Next.js](https://nextjs.org) project providing a **secure, scalable, and SEO-friendly** blogging experience with a cloud-based infrastructure.
 
-First, run the development server:
+## 🚀 Features  
+- **Authentication**: Secure user login and authorization with [Auth.js](https://authjs.dev).  
+- **Database**: [MongoDB](https://www.mongodb.com/) for efficient content storage.  
+- **Validation**: Data validation using [Zod](https://zod.dev).  
+- **Containerization**: Easily deployable using **Docker**.  
+- **CI/CD**: Automated deployment with **GitHub Actions**.  
+
+## 🛠 Getting Started  
+
+To set up the development environment, follow these steps:
 
 ```bash
 npm run dev
@@ -10,27 +19,38 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser to see the blogsite in action.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🐳 Running with Docker  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You can containerize and run this project using Docker:
 
-## Learn More
+```bash
+docker build -t blogsite .
+docker run -p 3000:3000 blogsite
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📌 Tech Stack  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js** - SSR & API Routes  
+- **React** - UI Development  
+- **MongoDB** - Database  
+- **Auth.js** - User Authentication  
+- **Zod** - Schema Validation  
+- **Docker** - Containerization  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📚 Learn More  
 
-## Deploy on Vercel
+- [Next.js Documentation](https://nextjs.org/docs)  
+- [MongoDB Documentation](https://www.mongodb.com/docs/)  
+- [Auth.js Documentation](https://authjs.dev)  
+- [Zod Documentation](https://zod.dev)  
+- [Docker Documentation](https://docs.docker.com/)  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deploy on Vercel  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The best way to deploy this project is by using [Vercel](https://vercel.com/), the creators of Next.js.
+
+Check out the [Next.js Deployment Docs](https://nextjs.org/docs/deployment) for more details.
